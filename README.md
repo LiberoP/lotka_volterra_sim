@@ -2,6 +2,8 @@
 
 A C++20 implementation of the Lotka-Volterra predator-prey model using explicit Euler integration. This is a learning project focused on practicing modern C++ and numerical simulation.
 
+![Results](results.png)
+
 ## Overview
 
 The Lotka-Volterra equations describe the dynamics of biological systems where two species interact: one as predator, one as prey. This project simulates those equations numerically and outputs the results for visualization.
