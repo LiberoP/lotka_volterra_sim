@@ -15,7 +15,9 @@ dx/dt = A·x·(1 - y)
 dy/dt = D·y·(x - 1)
 ```
 
-where `x` and `y` are normalized (relative) population densities.
+where `x` and `y` are normalized (relative) population densities, respectively of preys and predators.
+
+These are approximated using direct (first order) Euler integration.
 
 ## Project Structure
 
@@ -60,18 +62,15 @@ cmake .. -DBUILD_TESTING=OFF
 
 ## Running
 
-The program reads parameters from `input.txt`:
+The program reads parameters from `input.txt` (which has to be created / modified manually by the user); format is: `A B C D N delta_t x0 y0` (the first four are the ODEs parameters; then in order: number of simulation steps, time step for integration, initial number of preys, and initial number of predators).
+
+Before running from inside `build/`, you can for copy the example input file provided in this repo:
+```
+cp ../input.txt .
 
 ```
-A B C D N delta_t x0 y0
-```
 
-Example:
-```
-1.0 1.0 1.0 1.0 100000 0.001 1.5 1.5
-```
-
-Then run:
+And then run:
 ```bash
 ./volterra
 ```
@@ -92,7 +91,7 @@ or run directly:
 
 Test reference values were generated using `tests_calculator_python.py`, which uses `scipy.integrate.solve_ivp` as an independent solver.
 
-## Visualization
+## Visualization of results
 
 After running the simulation:
 
@@ -103,7 +102,7 @@ python plot_results.py
 This produces `results.png` with three panels:
 1. Population over time
 2. Phase space trajectory
-3. Relative energy drift
+3. Relative energy drift.
 
 ## Notes
 
