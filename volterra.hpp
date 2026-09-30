@@ -1,5 +1,7 @@
-#ifndef FN_FINAL_HPP
-#define FN_FINAL_HPP
+// declarations
+
+#ifndef FN_VOLTERRA_HPP
+#define FN_VOLTERRA_HPP
 
 #include <vector>
 

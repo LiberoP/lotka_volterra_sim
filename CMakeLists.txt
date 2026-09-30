@@ -1,9 +1,16 @@
+# build configuration file for simulation and unit tests
+
 cmake_minimum_required(VERSION 3.28)
-project(finalpf VERSION 0.1.0)
+project(volterrapf VERSION 0.1.0)
+
+include(FetchContent)
+FetchContent_Declare(doctest
+  GIT_REPOSITORY https://github.com/doctest/doctest.git
+  GIT_TAG v2.4.12)
+FetchContent_MakeAvailable(doctest)
 
 # abilita il supporto per i test, tra cui l'opzione BUILD_TESTING usata sotto
 include(CTest)
-
 
 # esporta il compilation database, utile per altri strumenti, a partire dall'editor
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -33,19 +40,16 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 endif()
 string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined")
 
-# se usato, richiedi il componente graphics della libreria SFML (versione 2.6 in Ubuntu 24.04)
-### find_package(SFML 2.6 COMPONENTS graphics REQUIRED)
-
-add_executable(final main.cpp final.cpp final.hpp)
-# nel caso si usi SFML. analogamente per eventuali altre librerie
-### target_link_libraries(final PRIVATE sfml-graphics)
+add_executable(volterra main.cpp volterra.cpp volterra.hpp)
 
 # il testing e' abilitato di default
 # per disabilitarlo, passare -DBUILD_TESTING=OFF a cmake durante la fase di configurazione
 if (BUILD_TESTING)
 
-  add_executable(final.test final.test.cpp final.cpp)
+  add_executable(volterra.test volterra.test.cpp volterra.cpp)
 
-  add_test(NAME final.test COMMAND final.test)
+  target_link_libraries(volterra.test PRIVATE doctest::doctest)
+
+  add_test(NAME volterra.test COMMAND volterra.test)
 
 endif()

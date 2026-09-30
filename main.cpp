@@ -1,4 +1,6 @@
-#include "final.hpp"
+// main executable. Functions defined elsewhere.
+
+#include "volterra.hpp"
 
 #include <cmath>
 #include <cstdlib>
@@ -12,7 +14,7 @@ int main()
   try {
     fn::Simulation sim;
 
-    std::ifstream infile{"./Input.txt"};
+    std::ifstream infile{"./input.txt"};
 
     if (!infile) {
       throw std::runtime_error{"Impossible to open input file"};
@@ -28,7 +30,7 @@ int main()
     if ((!(infile >> A >> B >> C >> D >> input_N >> delta_t >> x0 >> y0))
 
     ) {
-      throw std::runtime_error{"Invalid or incomplete data in Input.txt"};
+      throw std::runtime_error{"Invalid or incomplete data in input.txt"};
     }
 
     if (input_N != std::floor(input_N)) {
@@ -44,7 +46,7 @@ int main()
     fn::Parameters pars = {A, B, C, D, N, delta_t};
     auto res            = sim.result();
 
-    std::ofstream outfile{"Results.txt"};
+    std::ofstream outfile{"results.txt"};
 
     if (!outfile) {
       throw std::runtime_error{"Impossible to open output file"};

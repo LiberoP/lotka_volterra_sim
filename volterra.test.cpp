@@ -1,8 +1,10 @@
+// tests (uses doctest)
+
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
-#include "final.hpp"
+#include "volterra.hpp"
 
-#include "doctest.h"
+#include <doctest/doctest.h>
 
 TEST_CASE("Testing Simulation")
 {
@@ -65,7 +67,7 @@ TEST_CASE("Testing Simulation")
     CHECK_THROWS(sim.addUserPoint({0., 1.}));
   }
 
-  SUBCASE("final A1")
+  SUBCASE("volterra A1")
   {
     sim.addParameters(parsA);
     sim.addUserPoint(p1);
@@ -76,7 +78,7 @@ TEST_CASE("Testing Simulation")
     CHECK(result[parsA.N].H == doctest::Approx(52.72).epsilon(0.05));
   }
 
-  SUBCASE("final A2")
+  SUBCASE("volterra A2")
   {
     sim.addParameters(parsA);
     sim.addUserPoint(p2);
@@ -87,7 +89,7 @@ TEST_CASE("Testing Simulation")
     CHECK(result[parsA.N].H == doctest::Approx(65.49).epsilon(0.05));
   }
 
-  SUBCASE("final A3")
+  SUBCASE("volterra A3")
   {
     sim.addParameters(parsA);
     sim.addUserPoint(p3);
@@ -131,7 +133,7 @@ TEST_CASE("Testing Simulation")
     CHECK(result[4].H == doctest::Approx(36.18).epsilon(0.05));
   }
 
-  SUBCASE("final B4")
+  SUBCASE("volterra B4")
   {
     sim.addParameters(parsB);
     sim.addUserPoint(p4);
@@ -142,7 +144,7 @@ TEST_CASE("Testing Simulation")
     CHECK(result[parsB.N].H == doctest::Approx(777.54).epsilon(0.05));
   }
 
-  SUBCASE("final B5")
+  SUBCASE("volterra B5")
   {
     sim.addParameters(parsB);
     sim.addUserPoint(p5);
@@ -153,7 +155,7 @@ TEST_CASE("Testing Simulation")
     CHECK(result[parsB.N].H == doctest::Approx(982.00).epsilon(0.05));
   }
 
-  SUBCASE("final B6")
+  SUBCASE("volterra B6")
   {
     sim.addParameters(parsB);
     sim.addUserPoint(p6);
@@ -201,7 +203,7 @@ TEST_CASE("Testing Simulation")
     CHECK(result[20].H == doctest::Approx(1627.62).epsilon(0.05));
   }
 
-  SUBCASE("final C4")
+  SUBCASE("volterra C4")
   {
     sim.addParameters(parsC);
     sim.addUserPoint(p4);
@@ -212,7 +214,7 @@ TEST_CASE("Testing Simulation")
     CHECK(result[parsC.N].H == doctest::Approx(27.30).epsilon(0.05));
   }
 
-  SUBCASE("final C5")
+  SUBCASE("volterra C5")
   {
     sim.addParameters(parsC);
     sim.addUserPoint(p5);
@@ -223,7 +225,7 @@ TEST_CASE("Testing Simulation")
     CHECK(result[parsC.N].H == doctest::Approx(143.00).epsilon(0.05));
   }
 
-  SUBCASE("final C6")
+  SUBCASE("volterra C6")
   {
     sim.addParameters(parsC);
     sim.addUserPoint(p6);
@@ -271,7 +273,7 @@ TEST_CASE("Testing Simulation")
     CHECK(result[20].H == doctest::Approx(127.37).epsilon(0.05));
   }
 
-  SUBCASE("final D4")
+  SUBCASE("volterra D4")
   {
     sim.addParameters(parsD);
     sim.addUserPoint(p4);
@@ -282,7 +284,7 @@ TEST_CASE("Testing Simulation")
     CHECK(result[parsD.N].H == doctest::Approx(23.54).epsilon(0.05));
   }
 
-  SUBCASE("final D5")
+  SUBCASE("volterra D5")
   {
     sim.addParameters(parsD);
     sim.addUserPoint(p5);
@@ -293,7 +295,7 @@ TEST_CASE("Testing Simulation")
     CHECK(result[parsD.N].H == doctest::Approx(112.54).epsilon(0.05));
   }
 
-  SUBCASE("final D6")
+  SUBCASE("volterra D6")
   {
     sim.addParameters(parsD);
     sim.addUserPoint(p6);
