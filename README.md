@@ -1,4 +1,4 @@
-# Volterra Predator-Prey Simulation
+# Lotka-Volterra Predator-Prey Simulation
 
 A C++20 implementation of the Lotka-Volterra predator-prey model using explicit Euler integration. This is a learning project focused on practicing modern C++ and numerical simulation.
 
